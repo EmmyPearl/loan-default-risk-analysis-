@@ -1,14 +1,25 @@
-# 🏦 Loan Default Risk Analysis
+# 🏦 Loan Default Risk Analysis Dashboard
 
 **Tools:** PostgreSQL · Microsoft Excel  
 **Dataset:** [Loan Default Dataset – Kaggle](https://www.kaggle.com/datasets/nikhil1e9/loan-default)  
-**Records analysed:** 255,347 loan applications
+**Records analysed:** 255,347 loan applications  
+**Author:** Emmanuel Enuodu | [LinkedIn](https://www.linkedin.com/in/enuodu-emmanuel/) | [GitHub](https://github.com/EmmyPearl)
+
+---
+
+## 📊 Dashboard Preview
+
+![Loan Default Risk Analysis Dashboard](Loan-default-analysis-dashboard.jpeg)
+
+*Multi-panel Excel dashboard showing default rate by interest rate band, credit score band, age group, employment type, and loan purpose.*
 
 ---
 
 ## 📌 Project Overview
 
-This project analyses personal loan data to identify the key factors that predict whether a borrower will default on their loan. The findings are intended to help banks and financial institutions make more informed lending decisions and reduce credit risk exposure.
+This project analyses 255,347 personal loan applications to identify the key factors that predict whether a borrower will default. The findings are designed to help banks and financial institutions make more informed lending decisions and reduce credit risk exposure.
+
+The full pipeline covers data import and integrity checks in PostgreSQL, 8 targeted SQL queries across risk dimensions, and a professional multi-panel Excel dashboard with KPI cards and 6 charts.
 
 ---
 
@@ -44,7 +55,7 @@ This project analyses personal loan data to identify the key factors that predic
 ### Step 1 — Data Import & Exploration (PostgreSQL)
 - Imported CSV into PostgreSQL and created a structured `loans` table
 - Verified data integrity: checked row counts and null values across key columns
-- Explored data distributions using `LIMIT`, `COUNT`, and `PRAGMA` checks
+- Explored data distributions using `LIMIT`, `COUNT`, and aggregation checks
 
 ### Step 2 — SQL Analysis
 Wrote 8 analytical queries covering:
@@ -78,76 +89,4 @@ Wrote 8 analytical queries covering:
 
 ### 3. Defaulters Earn Less but Borrow More
 | Group | Avg Income | Avg Loan Amount | Avg Interest Rate |
-|-------|-----------|-----------------|-------------------|
-| Defaulters | $71,845 | $144,515 | 15.90% |
-| Non-defaulters | $83,899 | $125,354 | 13.18% |
-
-> Defaulters borrowed 15% more despite earning 14% less — a clear overleveraging pattern.
-
-### 4. Employment Type Matters
-| Employment Type | Default Rate |
-|----------------|-------------|
-| Unemployed | 13.55% |
-| Part-time | 11.97% |
-| Self-employed | 11.46% |
-| Full-time | 9.46% |
-
-### 5. Credit Score is a Weak Standalone Predictor
-The gap between Poor (<580) and Exceptional (800+) credit scores is only **2.66 percentage points** (12.47% vs 9.81%), suggesting credit score alone is insufficient for risk assessment.
-
-### 6. Business Loans Carry the Highest Default Risk by Purpose
-Business loans default at **12.33%** while Home loans are the safest at **10.23%**.
-
-### 7. Higher Interest Rates Strongly Correlate with Default
-| Interest Rate Band | Default Rate |
-|-------------------|-------------|
-| High (>15%) | 15.82% |
-| Medium (10–15%) | 10.54% |
-| Low (<10%) | 7.06% |
-
----
-
-## 💡 Recommendations
-
-1. **Apply stricter lending criteria for borrowers under 35** — this group represents disproportionate default risk
-2. **Use DTI ratio (debt-to-income) as a primary screening metric** — the income vs loan amount gap between defaulters and non-defaulters is significant
-3. **Weight employment stability heavily in risk models** — full-time employment is the safest employment category by a meaningful margin
-4. **Do not rely on credit score alone** — combine it with age, income, employment type and loan amount for accurate risk assessment
-5. **Review interest rate assignment policies** — high interest rates correlate strongly with defaults, possibly creating a self-fulfilling risk cycle
-
----
-
-## 📁 Repository Structure
-
-```
-loan-default-risk-analysis/
-│
-├── data/
-│   └── loan_default.csv          # Raw dataset (from Kaggle)
-│
-├── sql/
-│   └── loan_default_queries.sql  # All 8 analysis queries
-│
-├── dashboard/
-│   └── Loan_Default_Risk_Analysis.xlsx  # Excel dashboard
-│
-└── README.md
-```
-
----
-
-## 🚀 How to Reproduce
-
-1. Download the dataset from [Kaggle](https://www.kaggle.com/datasets/nikhil1e9/loan-default)
-2. Create a PostgreSQL database named `loan_analysis`
-3. Run the table creation script and import the CSV
-4. Execute the queries in `/sql/loan_default_queries.sql`
-5. Open the Excel dashboard in `/dashboard/`
-
----
-
-## 👤 Author
-
-Emmanuel Enuodu 
-Aspiring Data Analyst | Excel · SQL · Power BI  
-LinkedIn Profile: https://www.linkedin.com/in/enuodu-emmanuel/· Github profile: https://github.com/EmmyPearl
+|-----
